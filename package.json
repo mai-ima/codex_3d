@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && node tools/build.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "tsc --noEmit && node tools/asset-audit.mjs && node tools/generate-visual-qa.mjs"
+  },
+  "dependencies": {
+    "vite": "^5.4.0",
+    "three": "^0.166.1",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {}
+}
