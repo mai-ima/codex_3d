@@ -1,0 +1,3 @@
+import { createServer } from 'node:http';import { readFile } from 'node:fs/promises';import { extname, join, normalize } from 'node:path';
+const port=Number(process.env.PORT||5173), root=process.cwd();const types={'.html':'text/html','.ts':'text/typescript','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml'};
+createServer(async(req,res)=>{try{const url=new URL(req.url||'/',`http://localhost:${port}`);let p=normalize(url.pathname==='/'?'/index.html':url.pathname).replace(/^\/+/, '');const f=join(root,p);res.setHeader('content-type',types[extname(f)]||'application/octet-stream');res.end(await readFile(f));}catch{res.writeHead(404);res.end('Not found')}}).listen(port,'0.0.0.0',()=>console.log(`Dev/preview server http://0.0.0.0:${port}`));

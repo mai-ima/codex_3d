@@ -1,0 +1,2 @@
+import { mkdirSync, copyFileSync, cpSync, rmSync, existsSync } from 'node:fs';
+rmSync('dist',{recursive:true,force:true});mkdirSync('dist/src',{recursive:true});copyFileSync('index.html','dist/index.html');cpSync('src','dist/src',{recursive:true});if(existsSync('public'))cpSync('public','dist',{recursive:true});console.log('Static Vite-compatible build prepared in dist/. Install dependencies to use vite build for optimized bundling.');

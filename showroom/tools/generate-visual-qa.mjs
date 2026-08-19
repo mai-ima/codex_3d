@@ -1,0 +1,4 @@
+import { mkdirSync, writeFileSync } from 'node:fs';
+const shots=['suv/front','suv/engine','truck/cab-tilt','sedan/interior','gaming-pc/normal/normal','gaming-pc/exploded/full','gaming-pc/gpu/disassembled','gaming-pc/cpu/socket','gaming-pc/motherboard/detail','gaming-pc/ram/detail','gaming-pc/ssd/detail','gaming-pc/psu/internal'];
+for(const s of shots){const dir=`public/screenshots/${s.split('/').slice(0,-1).join('/')}`;mkdirSync(dir,{recursive:true});writeFileSync(`public/screenshots/${s}.svg`,`<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="100%" height="100%" fill="#05070a"/><text x="40" y="80" fill="#dbeafe" font-size="42">Visual QA placeholder: ${s}</text><text x="40" y="150" fill="#93c5fd" font-size="24">確認項目: silhouette / material / labels / cables / screws / exploded alignment</text></svg>`)}
+console.log(`Generated ${shots.length} organized visual QA placeholders in public/screenshots/.`);
