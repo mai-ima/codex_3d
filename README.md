@@ -84,3 +84,14 @@ vercel deploy --prebuilt --prod
 
 ## 18. マージ/コンフリクト回避
 マージできない場合は `MERGE_GUIDE.md` の手順に従い、`package.json`、`index.html`、`src/`、`public/screenshots/`、`dist/` を個別に扱ってください。特に `dist/` は生成物なのでコミットせず、必要に応じて分割PRで統合します。
+
+## 19. コンフリクトを避けるための隔離配置
+このPRは既存アプリへ直接上書きしないよう、実装本体を `showroom/` 配下へ移動しました。既存プロジェクト側の `index.html`、`package.json`、`src/` と衝突しにくく、必要な場合は `showroom/` を丸ごとサブアプリとして残すか、後から段階的に移植できます。Vercelはルートの `vercel.json` から `showroom` に移動して install/build します。
+
+ローカル実行は次の通りです。
+```bash
+cd showroom
+npm install
+npm run dev
+npm run build
+```

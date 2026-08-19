@@ -71,3 +71,8 @@ git status --short
 ```
 
 `git status --short` が空で、テストとビルドが通ればマージ準備完了です。
+
+## どうしても自分で解決できない場合
+このPRでは衝突範囲を小さくするため、アプリ本体を `showroom/` に隔離しています。既存プロジェクトへマージするときは、まず `.gitignore`、`vercel.json`、`README.md`、`MERGE_GUIDE.md`、`showroom/` だけを受け入れてください。既存のルート `package.json` や `src/` を触らないため、通常のアプリ衝突を回避できます。
+
+もしGitHub上で競合解消する場合は、`showroom/` 配下は「Accept incoming」、既存アプリ側のファイルは「Keep current」を選ぶのが安全です。
